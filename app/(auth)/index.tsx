@@ -93,7 +93,7 @@ const Index = (props: Props) => {
               alignSelf: "center",
               alignContent: "center",
               fontFamily: "outfit-bold",
-              fontSize: 18
+              fontSize: 18,
             },
           ]}
         >
@@ -118,7 +118,7 @@ const Index = (props: Props) => {
             width: "80%",
             marginHorizontal: "auto",
             paddingBlock: 20,
-            borderRadius: innerWidth,
+            borderRadius: 200,
           }}
           variant="block"
         />

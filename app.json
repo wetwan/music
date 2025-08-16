@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "music",
+    "name": "Music",
     "slug": "music",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo beatbox.png",
     "scheme": "music",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,26 +13,26 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo_with_name.png"
-    
+        "foregroundImage": "./assets/images/logo beatbox.png"
       },
       "edgeToEdgeEnabled": true
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon":"./assets/images/logo_with_name.png"
+      "favicon": "./assets/images/logo beatbox.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/logo_with_name.png",
+          "image": "./assets/images/logo beatbox.png",
           "imageWidth": 200,
           "resizeMode": "contain"
         }
-      ]
+      ],
+      "expo-audio"
     ],
     "experiments": {
       "typedRoutes": true

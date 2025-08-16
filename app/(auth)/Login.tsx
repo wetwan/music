@@ -3,6 +3,7 @@ import Button from "@/components/ux/Button";
 import Input from "@/components/ux/Input";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
@@ -14,6 +15,7 @@ import {
 
 const Login = () => {
   const [isChecked, setIschecked] = useState(false);
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Image
@@ -105,7 +107,7 @@ const Login = () => {
       </View>
       <Button
         title="Login"
-        onPress={() => null}
+        onPress={() => router.replace("/(tabs)")}
         style={{
           width: "80%",
           marginInline: "auto",
