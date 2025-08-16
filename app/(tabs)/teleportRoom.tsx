@@ -1,37 +1,50 @@
+import PopularClub from "@/components/teleport/popularclub";
+import PopularCountry from "@/components/teleport/popularcountry";
+import Recent from "@/components/teleport/recent/recent";
+import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const TeleportRoom = () => {
   return (
     <>
-      <ScrollView>
-        <SafeAreaView>
-          <ThemedView style={[styles.container]}></ThemedView>
-        </SafeAreaView>
-      </ScrollView>
+      <ThemedView style={[styles.container]} lightColor="#fff" darkColor="#000">
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
+          <SafeAreaView>
+            <View style={styles.view}>
+              <MaterialCommunityIcons
+                name="passport-biometric"
+                size={24}
+                color={"#1e90ff"}
+              />
+              <ThemedText style={styles.text}>Teleport Room</ThemedText>
+            </View>
+            <PopularClub />
+            <PopularCountry />
+            <Recent />
+          </SafeAreaView>
+        </ScrollView>
+      </ThemedView>
     </>
   );
 };
 
 export default TeleportRoom;
 
-// <MaterialCommunityIcons
-//               name="passport-biometric"
-//               size={24}
-//               color={focused ? "#1e90ff" : "gray"}
-//             />
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: "relative",
-    backgroundColor: "#000",
+    padding: 20,
   },
   text: {
     fontSize: 20,
-    color: "#aaa",
-    fontFamily: "outfit",
+    fontFamily: "outfit-bold",
   },
+  view: { flexDirection: "row", gap: 5, alignItems: "center" },
 });

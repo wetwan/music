@@ -11,13 +11,14 @@ import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-
-
 const Home = () => {
   return (
     <>
       <ThemedView style={[styles.container]} lightColor="#fff" darkColor="#000">
-        <ScrollView>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
           <SafeAreaView>
             <Header />
             <Search />
@@ -27,7 +28,7 @@ const Home = () => {
             <TopArtist />
             <Recent />
           </SafeAreaView>
-        </ScrollView>{" "}
+        </ScrollView>
       </ThemedView>
       <MiniContol />
     </>

@@ -2,9 +2,8 @@ import { yourMix } from "@/constants/music";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { FlatList, Pressable, View } from "react-native";
+import { FlatList, TouchableOpacity, View } from "react-native";
 import { ThemedText } from "../ThemedText";
-
 
 const MyMix = () => {
   const [myMix, setMyMix] = useState<any[]>([]);
@@ -31,7 +30,7 @@ const MyMix = () => {
         keyExtractor={(item, i) => i.toString()}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
-          <Pressable
+          <TouchableOpacity
             style={{
               margin: 10,
               borderRadius: 20,
@@ -42,7 +41,7 @@ const MyMix = () => {
             onPress={() => {
               router.push({
                 pathname: "/pages/mix/[mixId]",
-                params: { mixId: item.name as string},
+                params: { mixId: item.name as string },
               });
             }}
           >
@@ -63,7 +62,7 @@ const MyMix = () => {
             >
               {item.name.slice(0, 10)}
             </ThemedText>
-          </Pressable>
+          </TouchableOpacity>
         )}
       />
     </View>

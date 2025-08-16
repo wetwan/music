@@ -27,6 +27,7 @@ export interface PopularNightClubProp {
     country: string;
     image: string;
     id: string;
+    city?: string
 }
 export interface PopularCountryProp {
     country: string;

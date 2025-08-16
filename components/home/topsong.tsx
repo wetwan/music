@@ -23,7 +23,7 @@ const TopMoodSong = () => {
       }}
     >
       <ThemedText style={{ fontFamily: "outfit-bold", fontSize: 16 }}>
-        Top recommendation
+        Top Mood
       </ThemedText>
       <FlatList
         data={topMoodSong}

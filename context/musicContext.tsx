@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { recents } from "@/constants/music";
 import { MusicProp } from "@/types/types";
 import { Audio, AVPlaybackStatus } from "expo-av";
@@ -5,6 +6,7 @@ import { Audio, AVPlaybackStatus } from "expo-av";
 import { Router, useRouter } from "expo-router";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { Platform } from "react-native";
 
 type MusicContextType = {
   sound: Audio.Sound | null;
@@ -73,67 +75,17 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     };
   }, [sound, isPlaying]);
 
-  // const playSound = async (index: number) => {
-  //   if (sound && currentSongIndex === index && !isPlaying) {
-  //     await sound.playAsync();
-  //     setIsPlaying(true);
-  //     return;
-  //   }
-
-  //   // if switching songs, unload old sound
-  //   if (sound) await sound.unloadAsync();
-
-  //   // load and play new sound
-  //   const { sound: newSound } = await Audio.Sound.createAsync(
-  //     { uri: playlist[index].file },
-  //     { shouldPlay: true }
-  //   );
-
-  //   // when song ends
-  //   newSound.setOnPlaybackStatusUpdate((status: AVPlaybackStatus) => {
-  //     if (status.isLoaded && status.didJustFinish) {
-  //       // handle "next" here if needed
-  //       handleNextSong();
-  //     }
-  //   });
-
-  //   setIsPlaying(true);
-  //   setSound(newSound);
-  //   setCurrentSongIndex(index);
-  // };
-
-  // const handlePlayPause = async () => {
-  //   if (!sound) return;
-  //   if (!isPlaying) {
-  //     await sound.pauseAsync();
-  //   } else {
-  //     await sound.playAsync();
-  //   }
-
-  //   setIsPlaying(!isPlaying);
-  // };
-
-  // const handleNextSong = async () => {
-  //   const nextIndex = (currentSongIndex || 0 + 1) % playlist.length;
-  //   playSound(nextIndex);
-  // };
-  // const handlePrevSong = async () => {
-  //   const prevIndex =
-  //     currentSongIndex || 0 - 1 < 0
-  //       ? playlist.length - 1
-  //       : currentSongIndex || 0 - 1;
-  //   playSound(prevIndex);
-  // };
-
+  
   const getRecent = async () => {
     // Use recents directly instead of waiting for setState
     setRecent(recents);
     setPlaylist(recents);
 
-    if (!isPlaying && recents.length > 0 && !sound) {
+    if (!isPlaying && recents.length > 0 && !sound && Platform.OS !== "web") {
       playSoundWithList(recents, 0);
     }
   };
+
 
   const playSoundWithList = async (list: any[], index: number) => {
     if (!list[index]?.file) return; // no file, skip
@@ -166,6 +118,7 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     playSoundWithList(playlist, index);
   };
 
+  
   const handlePlayPause = async () => {
     if (!sound) return;
 
