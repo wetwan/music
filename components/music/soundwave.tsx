@@ -48,7 +48,7 @@ export default SoundWave;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#000",
+ 
     paddingVertical: 10,
     alignSelf: "center",
   },

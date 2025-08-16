@@ -12,7 +12,6 @@ const Header = () => {
         flexDirection: "row",
         justifyContent: "space-between",
         padding: 10,
-
         width: "100%",
         alignItems: "center",
       }}

@@ -1,4 +1,3 @@
-
 import MiniContol from "@/components/music/MiniContol";
 import Header from "@/components/mymix/header";
 import { ThemedView } from "@/components/ThemedView";
@@ -32,7 +31,7 @@ const MoodId = () => {
 
   return (
     <>
-      <ThemedView style={styles.container}>
+      <ThemedView style={styles.container} lightColor="#fff" darkColor="#000">
         <SafeAreaView>
           <Header playlist={musicList} />
           <FlatList

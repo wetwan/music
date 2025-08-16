@@ -1,4 +1,5 @@
 import SocialLogin from "@/components/auth/socialLogin";
+import { ThemedView } from "@/components/ThemedView";
 import Button from "@/components/ux/Button";
 import Input from "@/components/ux/Input";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -17,7 +18,7 @@ const Login = () => {
   const [isChecked, setIschecked] = useState(false);
   const router = useRouter();
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container} lightColor="#fff" darkColor="#000">
       <Image
         source={require("../../assets/images/name white.png")}
         style={{
@@ -117,7 +118,7 @@ const Login = () => {
         }}
       />
       <SocialLogin name="Login" />
-    </View>
+    </ThemedView>
   );
 };
 
@@ -126,7 +127,6 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
   },
   text: { color: "#aaa", fontFamily: "outfit", fontSize: 15 },
   containerStyle: {

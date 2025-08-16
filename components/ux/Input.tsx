@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 
 import React, { useState } from "react";
 import {
   Platform,
-  Text,
   TextInput,
   TextInputProps,
   TextStyle,
@@ -11,6 +11,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
+import { ThemedText } from "../ThemedText";
 
 interface InputProps extends TextInputProps {
   inputStyle?: TextStyle;
@@ -69,7 +70,7 @@ const Input = ({
   return (
     <View style={{ paddingTop: 10, marginTop: 10 }}>
       {label && (
-        <Text
+        <ThemedText
           style={[
             labelStye,
             {
@@ -77,9 +78,11 @@ const Input = ({
               fontFamily: "outfit",
             },
           ]}
+          lightColor="#fff"
+          darkColor="#000"
         >
           {label}
-        </Text>
+        </ThemedText>
       )}
       <View
         style={[

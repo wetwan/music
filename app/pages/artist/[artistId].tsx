@@ -48,9 +48,9 @@ const ArtistId = () => {
   }, [artistId]);
   return (
     <>
-      <ScrollView style={{ flex: 1 }}>
-        <SafeAreaView>
-          <ThemedView>
+      <ThemedView style={{ flex: 1 }} lightColor="#fff" darkColor="#000">
+        <ScrollView>
+          <SafeAreaView>
             <Header
               playlist={musicList}
               artistList={artistList}
@@ -58,9 +58,9 @@ const ArtistId = () => {
             />
             <Album albumList={albumList} />
             <Songs playlist={musicList} />
-          </ThemedView>
-        </SafeAreaView>
-      </ScrollView>
+          </SafeAreaView>
+        </ScrollView>
+      </ThemedView>
       {isPlaying === true && <MiniContol />}
     </>
   );

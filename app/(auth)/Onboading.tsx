@@ -9,7 +9,6 @@ import {
   Animated,
   Dimensions,
   FlatList,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -21,9 +20,7 @@ import {
   withSpring,
 } from "react-native-reanimated";
 
-type Props = {};
-
-const Onboading = (props: Props) => {
+const Onboading = () => {
   const router = useRouter();
   const { width } = Dimensions.get("window");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -219,5 +216,3 @@ const Onboading = (props: Props) => {
 };
 
 export default Onboading;
-
-const styles = StyleSheet.create({});

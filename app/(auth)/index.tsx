@@ -1,4 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-empty-object-type */
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import Button from "@/components/ux/Button";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -56,7 +59,7 @@ const Index = (props: Props) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container} lightColor="#fff" darkColor="#000">
       {/* <Stack.Screen
         options={{
           headerShown: true,
@@ -85,7 +88,7 @@ const Index = (props: Props) => {
         }}
       >
         <View />
-        <Text
+        <ThemedText
           style={[
             styles.basictext,
             {
@@ -96,9 +99,11 @@ const Index = (props: Props) => {
               fontSize: 18,
             },
           ]}
+          lightColor="#fff"
+          darkColor="#000"
         >
           Add Account
-        </Text>
+        </ThemedText>
         <HeaderRight />
       </View>
       <View style={{ marginTop: 200 }}>
@@ -106,9 +111,13 @@ const Index = (props: Props) => {
           source={require("../../assets/images/name white.png")}
           style={styles.image}
         />
-        <Text style={[styles.basictext, { marginBottom: 100 }]}>
+        <ThemedText
+          style={[styles.basictext, { marginBottom: 100 }]}
+          lightColor="#fff"
+          darkColor="#000"
+        >
           Millions of songs free on BeatBox
-        </Text>
+        </ThemedText>
       </View>
       <View>
         <Button
@@ -132,7 +141,7 @@ const Index = (props: Props) => {
       <Text style={[styles.basictext]}>
         Your beat your box, unlimited music no ads
       </Text>
-    </View>
+    </ThemedView>
   );
 };
 

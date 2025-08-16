@@ -21,3 +21,16 @@ export interface AlbumProp {
     image: string;
 
 }
+
+export interface PopularNightClubProp {
+    name: string;
+    country: string;
+    image: string;
+    id: string;
+}
+export interface PopularCountryProp {
+    country: string;
+    image: string;
+    id: string;
+}
+

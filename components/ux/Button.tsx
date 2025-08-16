@@ -1,11 +1,11 @@
 import React from "react";
 import {
   StyleSheet,
-  Text,
   TextStyle,
   TouchableOpacity,
   ViewStyle,
 } from "react-native";
+import { ThemedText } from "../ThemedText";
 
 interface ButtonProps {
   title: string;
@@ -62,16 +62,18 @@ const Button = ({
       style={[styles.base, getButtonStyle(), style]}
       disabled={disabled}
     >
-      <Text
+      <ThemedText
         style={[
           styles.text,
           getTextStyle(),
           textStyle,
           { fontFamily: "outfit" },
         ]}
+        lightColor="#fff"
+        darkColor="#000"
       >
         {title}
-      </Text>
+      </ThemedText>
     </TouchableOpacity>
   );
 };

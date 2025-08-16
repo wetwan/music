@@ -11,14 +11,14 @@ import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = {};
 
-const Home = (props: Props) => {
+
+const Home = () => {
   return (
     <>
-      <ScrollView>
-        <SafeAreaView>
-          <ThemedView style={[styles.container]}>
+      <ThemedView style={[styles.container]} lightColor="#fff" darkColor="#000">
+        <ScrollView>
+          <SafeAreaView>
             <Header />
             <Search />
             <MyMix />
@@ -26,9 +26,9 @@ const Home = (props: Props) => {
             <MyArtist />
             <TopArtist />
             <Recent />
-          </ThemedView>
-        </SafeAreaView>
-      </ScrollView>{" "}
+          </SafeAreaView>
+        </ScrollView>{" "}
+      </ThemedView>
       <MiniContol />
     </>
   );
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: "relative",
-    backgroundColor: "#000",
   },
   text: {
     fontSize: 20,

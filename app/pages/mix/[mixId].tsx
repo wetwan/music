@@ -37,7 +37,7 @@ const MixId = () => {
   }, [mixId, setPlaylist]);
   return (
     <>
-      <ThemedView style={styles.container}>
+      <ThemedView style={styles.container} lightColor="#fff" darkColor="#000">
         <SafeAreaView>
           <Header playlist={musicList} />
           <FlatList
@@ -58,5 +58,5 @@ const MixId = () => {
 export default MixId;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#000" },
+  container: { flex: 1, padding: 20,},
 });

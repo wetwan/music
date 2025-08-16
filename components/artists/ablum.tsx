@@ -10,15 +10,19 @@ type Props = {
 
 const Album = ({ albumList }: Props) => {
   return (
-    <View style={{flex: 1}} >
+    <View style={{ flex: 1 }}>
       <ThemedText style={[styles.text, { marginTop: 20, padding: 10 }]}>
-        list of artist album{" "}
+        list of artist album
       </ThemedText>
       <View style={styles.container}>
         {albumList.map((item) => (
           <TouchableOpacity key={item.id} style={styles.Pressable}>
             <Image source={item.image} style={styles.image} />
-            <ThemedText style={[styles.text, {textAlign: 'center' , marginTop: 5}]}>{item.name}</ThemedText>
+            <ThemedText
+              style={[styles.text, { textAlign: "center", marginTop: 5 }]}
+            >
+              {item.name}
+            </ThemedText>
           </TouchableOpacity>
         ))}
       </View>
@@ -30,6 +34,7 @@ export default Album;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginTop: 5,
     padding: 10,
     flexDirection: "row",

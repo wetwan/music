@@ -2,6 +2,8 @@ import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { ThemedText } from "../ThemedText";
+import { ThemedView } from "../ThemedView";
 
 type Props = {
   name: string;
@@ -22,22 +24,28 @@ const SocialLogin = ({ name }: Props) => {
           marginBlock: 20,
         }}
       >
-        <View
+        <ThemedView
           style={{
             height: 1,
             borderWidth: 1,
             width: "30%",
             borderColor: "#aaa",
           }}
+          lightColor="#fff"
+          darkColor="#000"
         />
-        <Text style={[styles.text]}>or continue with</Text>
-        <View
+        <ThemedText style={[styles.text]} lightColor="#fff" darkColor="#000">
+          or continue with
+        </ThemedText>
+        <ThemedView
           style={{
             height: 1,
             borderWidth: 1,
             width: "30%",
             borderColor: "#aaa",
           }}
+          lightColor="#fff"
+          darkColor="#000"
         />
       </View>
       <View
@@ -81,16 +89,19 @@ const SocialLogin = ({ name }: Props) => {
             marginBlock: 20,
           }}
         >
-          <Text style={[styles.text]}>I don&apos;t have an account?</Text>
-          <Text
+          <ThemedText lightColor="#fff" darkColor="#000" style={[styles.text]}>
+            I don&apos;t have an account?
+          </ThemedText>
+          <ThemedText
             style={[
               styles.text,
               { color: "#1e90ff", fontFamily: "outfit-bold" },
             ]}
+            
             onPress={() => router.replace("/(auth)/SignUp")}
           >
             Create acctount
-          </Text>
+          </ThemedText>
         </View>
       ) : (
         <View

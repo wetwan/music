@@ -24,7 +24,7 @@ const Playlist = () => {
     useMusicCreation();
 
   return (
-    <ThemedView style={{ flex: 1, backgroundColor: "#000" }}>
+    <ThemedView style={{ flex: 1}} lightColor="#fff" darkColor="#000">
       <View
         style={{
           width: width * 0.9,
