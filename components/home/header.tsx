@@ -26,7 +26,7 @@ const Header = () => {
         }}
       >
         <Image
-          source={require("../../assets/images/logo beatbox.png")}
+          source={require("../../assets/images/logobeatbox.png")}
           style={{
             height: 40,
             width: 40,
@@ -52,7 +52,7 @@ const Header = () => {
           {isnotification ? (
             <MaterialCommunityIcons name="bell-badge" size={24} color="red" />
           ) : (
-            <MaterialCommunityIcons name="bell" size={24} color="white" />
+            <MaterialCommunityIcons name="bell" size={24} color="gray" />
           )}
         </Pressable>
       </View>

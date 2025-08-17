@@ -11,11 +11,9 @@ import React from "react";
 import { Dimensions, Pressable, StyleSheet, View } from "react-native";
 import TextTicker from "react-native-text-ticker";
 
-type Props = {};
 const { width, height } = Dimensions.get("screen");
-const Music = (props: Props) => {
-  const { currentSong, isPlaying, setIsPlaying, position, duration } =
-    useMusicCreation();
+const Music = () => {
+  const { currentSong, isPlaying, position, duration } = useMusicCreation();
 
   const formatTime = (mills: number) => {
     const minutes = Math.floor(mills / 60000);
@@ -30,7 +28,6 @@ const Music = (props: Props) => {
       <ImageBackground style={styles.imagepart} source={currentSong.image}>
         <Pressable
           style={{
-            padding: 7,
             backgroundColor: "black",
             position: "absolute",
             width: 30,
@@ -188,7 +185,7 @@ const Music = (props: Props) => {
             </ThemedText>
           </View>
         </View>
-        <Control isplaying={isPlaying} setIsplaying={setIsPlaying} />
+        <Control />
       </View>
     </ThemedView>
   );

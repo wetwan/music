@@ -10,7 +10,7 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
-import "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -26,11 +26,15 @@ export default function RootLayout() {
   }
 
   return (
-    <MusicProvider>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Slot />
-        <StatusBar style="auto" />
-      </ThemeProvider>
-    </MusicProvider>
+    <GestureHandlerRootView>
+      <MusicProvider>
+        <ThemeProvider
+          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+        >
+          <Slot />
+          <StatusBar style="auto" />
+        </ThemeProvider>
+      </MusicProvider>
+    </GestureHandlerRootView>
   );
 }

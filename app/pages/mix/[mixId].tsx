@@ -1,4 +1,3 @@
-
 import MiniContol from "@/components/music/MiniContol";
 import Header from "@/components/mymix/header";
 import { ThemedView } from "@/components/ThemedView";
@@ -58,5 +57,5 @@ const MixId = () => {
 export default MixId;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20,},
+  container: { flex: 1, padding: 20 },
 });

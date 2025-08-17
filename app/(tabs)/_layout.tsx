@@ -28,6 +28,7 @@ export default function TabLayout() {
               textAlign: "center",
               fontFamily: "outfit-bold",
               marginTop: 5,
+            width: '505%'
             }}
           >
             {title}
@@ -45,6 +46,7 @@ export default function TabLayout() {
             textAlign: "center",
             fontFamily: "outfit",
             marginTop: 5,
+          width: '505%'
           }}
         >
           {title}
@@ -53,7 +55,6 @@ export default function TabLayout() {
     );
   };
 
-  
   return (
     <Tabs
       screenOptions={{
@@ -83,11 +84,20 @@ export default function TabLayout() {
               focused={focused}
               title="Home"
               Icon={
-                <MaterialIcons
-                  name="home"
-                  size={24}
-                  color={focused ? "#1e90ff" : "gray"}
-                />
+                <View
+                  style={{
+                    height: 28,
+                    width: 28,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <MaterialIcons
+                    name="home"
+                    size={24}
+                    color={focused ? "#1e90ff" : "gray"}
+                  />
+                </View>
               }
             />
           ),
@@ -102,11 +112,20 @@ export default function TabLayout() {
               focused={focused}
               title="Teleport Room"
               Icon={
-                <MaterialCommunityIcons
-                  name="passport-biometric"
-                  size={24}
-                  color={focused ? "#1e90ff" : "gray"}
-                />
+                <View
+                  style={{
+                    height: 28,
+                    width: 28,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    name="passport-biometric"
+                    size={24}
+                    color={focused ? "#1e90ff" : "gray"}
+                  />
+                </View>
               }
             />
           ),
@@ -121,11 +140,20 @@ export default function TabLayout() {
               focused={focused}
               title="Library"
               Icon={
-                <MaterialIcons
-                  name="my-library-music"
-                  size={24}
-                  color={focused ? "#1e90ff" : "gray"}
-                />
+                <View
+                  style={{
+                    height: 28,
+                    width: 28,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <MaterialIcons
+                    name="my-library-music"
+                    size={24}
+                    color={focused ? "#1e90ff" : "gray"}
+                  />
+                </View>
               }
             />
           ),
@@ -140,11 +168,20 @@ export default function TabLayout() {
               focused={focused}
               title="Profile"
               Icon={
-                <EvilIcons
-                  name="user"
-                  size={24}
-                  color={focused ? "#1e90ff" : "gray"}
-                />
+                <View
+                  style={{
+                    height: 28,
+                    width: 28,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <EvilIcons
+                    name="user"
+                    size={24}
+                    color={focused ? "#1e90ff" : "gray"}
+                  />
+                </View>
               }
             />
           ),

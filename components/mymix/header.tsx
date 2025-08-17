@@ -1,6 +1,6 @@
 import { useMusicCreation } from "@/context/musicContext";
 import { Playlist } from "@/types/types";
-import { Entypo, Ionicons } from "@expo/vector-icons";
+import { Entypo, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { router } from "expo-router";
 import React from "react";
@@ -24,9 +24,21 @@ const Header = ({ playlist }: HeaderProps) => {
           marginBottom: 20,
         }}
       >
-        <Pressable onPress={() => router.back()}>
-          <Ionicons name="arrow-back-outline" size={24} color="#4a4a4a" />
+        <Pressable
+          style={{
+            backgroundColor: "gray",
+            width: 30,
+            height: 30,
+            justifyContent: "center",
+            alignItems: "center",
+            alignContent: "center",
+            borderRadius: 30,
+          }}
+          onPress={() => router.back()}
+        >
+          <MaterialIcons name="chevron-left" size={25} color={"white"} />
         </Pressable>
+
         <Pressable onPress={() => null}>
           <Entypo name="dots-three-vertical" size={24} color="#4a4a4a" />
         </Pressable>
@@ -70,10 +82,10 @@ const Header = ({ playlist }: HeaderProps) => {
           }}
           onPress={handlePlayPause}
         >
-          {isPlaying ? (
-            <Ionicons name="play" size={30} color="white" />
+          {!isPlaying ? (
+            <Ionicons name="play" size={30} color="gray" />
           ) : (
-            <Ionicons name="pause" size={30} color="white" />
+            <Ionicons name="pause" size={30} color="gray" />
           )}
         </Pressable>
       </View>

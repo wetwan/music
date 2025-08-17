@@ -1,19 +1,22 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import { Pressable, TextInput, View } from "react-native";
+import { Pressable, TextInput } from "react-native";
+import { ThemedView } from "../ThemedView";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type Props = {};
 
 const Search = (props: Props) => {
   return (
-    <View
+    <ThemedView
+      lightColor="#FFf"
+      darkColor="#000"
       style={{
         flexDirection: "row",
-
         alignItems: "center",
-        flex: 1,
+
         backgroundColor: "#fff",
+        borderWidth: 1,
         width: "90%",
         borderRadius: 300,
         gap: 10,
@@ -24,7 +27,8 @@ const Search = (props: Props) => {
       <MaterialIcons name="search" size={20} />
       <TextInput
         placeholder="Search"
-        style={{ padding: 14, flex: 1, outlineWidth: 0 }}
+        style={{ padding: 16, flex: 1, outlineWidth: 0, fontFamily: "outfit" }}
+        placeholderTextColor={"gray"}
       />
       <Pressable>
         <AntDesign
@@ -34,7 +38,7 @@ const Search = (props: Props) => {
           style={{ marginRight: 10 }}
         />
       </Pressable>
-    </View>
+    </ThemedView>
   );
 };
 

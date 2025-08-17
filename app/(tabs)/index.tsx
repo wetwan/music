@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: "relative",
+    flexGrow: 1,
   },
   text: {
     fontSize: 20,

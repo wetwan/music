@@ -3,6 +3,7 @@ import PopularCountry from "@/components/teleport/popularcountry";
 import Recent from "@/components/teleport/recent/recent";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { Colors } from "@/constants/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
@@ -11,17 +12,22 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const TeleportRoom = () => {
   return (
     <>
-      <ThemedView style={[styles.container]} lightColor="#fff" darkColor="#000">
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        style={{ flex: 1 }}
+      >
+        <ThemedView
+          style={[styles.container]}
+          lightColor="#fff"
+          darkColor="#000"
         >
           <SafeAreaView>
             <View style={styles.view}>
               <MaterialCommunityIcons
                 name="passport-biometric"
                 size={24}
-                color={"#1e90ff"}
+                    color={Colors.light.accent}
               />
               <ThemedText style={styles.text}>Teleport Room</ThemedText>
             </View>
@@ -29,8 +35,8 @@ const TeleportRoom = () => {
             <PopularCountry />
             <Recent />
           </SafeAreaView>
-        </ScrollView>
-      </ThemedView>
+        </ThemedView>
+      </ScrollView>
     </>
   );
 };

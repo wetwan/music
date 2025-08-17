@@ -32,7 +32,7 @@ const MoodId = () => {
   return (
     <>
       <ThemedView style={styles.container} lightColor="#fff" darkColor="#000">
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
           <Header playlist={musicList} />
           <FlatList
             contentContainerStyle={{ padding: 20 }}
@@ -44,6 +44,7 @@ const MoodId = () => {
           />
         </SafeAreaView>
       </ThemedView>
+
       <MiniContol />
     </>
   );
@@ -52,5 +53,5 @@ const MoodId = () => {
 export default MoodId;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#000" },
+  container: { flex: 1, padding: 20 },
 });

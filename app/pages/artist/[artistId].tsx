@@ -49,7 +49,7 @@ const ArtistId = () => {
   return (
     <>
       <ThemedView style={{ flex: 1 }} lightColor="#fff" darkColor="#000">
-        <ScrollView>
+        <ScrollView style={{ flex: 1 }}>
           <SafeAreaView>
             <Header
               playlist={musicList}

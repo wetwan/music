@@ -1,30 +1,24 @@
 import { ThemedView } from "@/components/ThemedView";
+import Back from "@/components/ux/back";
 import MuiscList from "@/components/ux/MuiscList";
 import { useMusicCreation } from "@/context/musicContext";
-import {
-  AntDesign,
-  MaterialCommunityIcons,
-  MaterialIcons,
-} from "@expo/vector-icons";
+import { useThemeColor } from "@/hooks/useThemeColor";
+import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { router } from "expo-router";
 import React from "react";
-import {
-  Dimensions,
-  FlatList,
-  Pressable,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Dimensions, FlatList, TouchableOpacity, View } from "react-native";
 
 const Playlist = () => {
   const { width, height } = Dimensions.get("screen");
 
   const { currentSong, handlePlayPause, isPlaying, playlist } =
     useMusicCreation();
+  const iconColor = useThemeColor({}, "icon");
+  const accentColor = useThemeColor({}, "accent");
 
   return (
-    <ThemedView style={{ flex: 1}} lightColor="#fff" darkColor="#000">
+    <ThemedView style={{ flex: 1 }} lightColor="#fff" darkColor="#000">
       <View
         style={{
           width: width * 0.9,
@@ -35,23 +29,7 @@ const Playlist = () => {
           justifyContent: "space-between",
         }}
       >
-        <Pressable
-          style={{
-            padding: 7,
-            backgroundColor: "white",
-            position: "absolute",
-            width: 30,
-            height: 30,
-            top: 20,
-            justifyContent: "center",
-            alignItems: "center",
-            left: 20,
-            borderRadius: 30,
-          }}
-          onPress={() => router.back()}
-        >
-          <MaterialIcons name="chevron-left" size={25} color={"black"} />
-        </Pressable>
+        <Back />
         <View>
           <MaterialCommunityIcons name="heart-plus" color={"white"} size={30} />
         </View>
@@ -81,19 +59,13 @@ const Playlist = () => {
             }}
           />
         </TouchableOpacity>
-        <Pressable
-          onPress={() => {
-            // router.push("/music");
-            handlePlayPause();
-            // playSound(playList[0].file);
-          }}
-        >
+        <TouchableOpacity onPress={handlePlayPause}>
           {!isPlaying ? (
-            <AntDesign name="play" color={"white"} size={30} />
+            <AntDesign name="playcircleo" color={iconColor} size={30} />
           ) : (
-            <AntDesign name="pause" color={"white"} size={30} />
+            <AntDesign name="pausecircleo" color={accentColor} size={30} />
           )}
-        </Pressable>
+        </TouchableOpacity>
       </View>
       <View style={{ width: width * 0.9, marginHorizontal: "auto" }}>
         <FlatList

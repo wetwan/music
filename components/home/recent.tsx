@@ -6,12 +6,14 @@ import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ThemedText } from "../ThemedText";
 
 const Recent = () => {
-  const { playSound, setCurrentSongIndex, recent } = useMusicCreation();
+  const { playSound, setCurrentSongIndex, recent, truncateText } =
+    useMusicCreation();
 
   return (
     <View
       style={{
         padding: 20,
+        flex: 1,
       }}
     >
       <ThemedText style={{ fontFamily: "outfit-bold", fontSize: 16 }}>
@@ -58,9 +60,7 @@ const Recent = () => {
                 { marginTop: 10, fontFamily: "outfit-bold" },
               ]}
             >
-              {item.name.length > 10
-                ? `${item.name.slice(0, 10)}...`
-                : item.name}
+              {truncateText(item.name, 10)}
             </ThemedText>
             <ThemedText
               style={[
@@ -68,9 +68,12 @@ const Recent = () => {
                 { textTransform: "capitalize", color: "#aaa" },
               ]}
             >
-              {item.artist.length > 10
-                ? `${item.artist.slice(0, 10)}...`
-                : item.artist}
+              {truncateText(
+                item.artist.length > 10
+                  ? `${item.artist.slice(0, 10)}...`
+                  : item.artist,
+                10
+              )}
             </ThemedText>
           </TouchableOpacity>
         )}
