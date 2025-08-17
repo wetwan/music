@@ -1,6 +1,7 @@
 import PopularClub from "@/components/teleport/popularclub";
 import PopularCountry from "@/components/teleport/popularcountry";
 import Recent from "@/components/teleport/recent/recent";
+import Search from "@/components/teleport/search";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
@@ -27,10 +28,11 @@ const TeleportRoom = () => {
               <MaterialCommunityIcons
                 name="passport-biometric"
                 size={24}
-                    color={Colors.light.accent}
+                color={Colors.light.accent}
               />
               <ThemedText style={styles.text}>Teleport Room</ThemedText>
             </View>
+            <Search />
             <PopularClub />
             <PopularCountry />
             <Recent />
@@ -52,5 +54,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "outfit-bold",
   },
-  view: { flexDirection: "row", gap: 5, alignItems: "center" },
+  view: {
+    flexDirection: "row",
+    gap: 5,
+    alignItems: "center",
+  },
 });

@@ -1,7 +1,8 @@
+import List from "@/components/profile/list";
 import ProfileCard from "@/components/profile/ProfileCard";
 import { ThemedView } from "@/components/ThemedView";
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 type Props = {};
@@ -10,14 +11,15 @@ const Profile = (props: Props) => {
   return (
     <>
       <ThemedView style={[styles.container]} lightColor="#fff" darkColor="#000">
-        <ScrollView
+        {/* <ScrollView
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
-        >
-          <SafeAreaView>
-            <ProfileCard />
-          </SafeAreaView>
-        </ScrollView>
+        > */}
+        <SafeAreaView>
+          <ProfileCard />
+          <List />
+        </SafeAreaView>
+        {/* </ScrollView> */}
       </ThemedView>
     </>
   );

@@ -4,7 +4,7 @@
     "slug": "music",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logo beatbox.png",
+    "icon": "./assets/images/logobeatbox.png",
     "scheme": "music",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,21 +13,21 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo beatbox.png"
+        "foregroundImage": "./assets/images/logobeatbox.png"
       },
       "edgeToEdgeEnabled": true
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/logo beatbox.png"
+      "favicon": "./assets/images/logobeatbox.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/logo beatbox.png",
+          "image": "./assets/images/logobeatbox.png",
           "imageWidth": 200,
           "resizeMode": "contain"
         }

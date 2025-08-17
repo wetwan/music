@@ -73,18 +73,7 @@ const MuiscList = ({ item, index }: Props) => {
             </ThemedText>
           </View>
         </View>
-        {/* <Pressable
-          onPress={async () => {
-            await 
-            handlePlayPause();
-          }}
-        >
-          {isPlaying && currentSongIndex === index ? (
-            <AntDesign name="pause" color={Colors.green} size={30} />
-          ) : (
-            <AntDesign name="play" color={"gray"} size={30} />
-          )}
-        </Pressable> */}
+
         <TouchableOpacity
           onPress={() => {
             if (isPlaying) {
