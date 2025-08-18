@@ -2,7 +2,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { popularNightClub } from "@/constants/teleport";
 import { PopularNightClubProp } from "@/types/types";
 import React, { useEffect, useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Club from "./club";
 
 const Recent = () => {
@@ -18,7 +18,7 @@ const Recent = () => {
   return (
     <View style={styles.container}>
       <ThemedText style={styles.text}>Recent Night Club</ThemedText>
-      <FlatList
+      {/* <FlatList
         data={club}
         numColumns={2}
         contentContainerStyle={{
@@ -30,8 +30,20 @@ const Recent = () => {
         }}
         keyExtractor={(item, i) => i.toString()}
         showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => <Club item={item} />}
-      />
+        renderItem={({ item }) => }
+      /> */}
+      <View
+        style={{
+          flexDirection: "row",
+          gap: 3,
+          flexWrap: "wrap",
+          alignContent: "center",
+        }}
+      >
+        {club.map((item, i) => (
+          <Club item={item} key={i} />
+        ))}
+      </View>
     </View>
   );
 };

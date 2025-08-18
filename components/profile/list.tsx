@@ -58,7 +58,7 @@ const List = () => {
       icon: (
         <MaterialIcons name="ssid-chart" size={22} color={iconColor} />
       ),
-      id: "7",
+      id: "8",
       path: "",
     },
   ];

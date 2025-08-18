@@ -1,5 +1,6 @@
 import { AlbumProp } from "@/types/types";
 import { Image } from "expo-image";
+import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { ThemedText } from "../ThemedText";
@@ -9,6 +10,7 @@ type Props = {
 };
 
 const Album = ({ albumList }: Props) => {
+  const router = useRouter();
   return (
     <View style={{ flex: 1 }}>
       <ThemedText style={[styles.text, { marginTop: 20, padding: 10 }]}>
@@ -16,7 +18,16 @@ const Album = ({ albumList }: Props) => {
       </ThemedText>
       <View style={styles.container}>
         {albumList.map((item) => (
-          <TouchableOpacity key={item.id} style={styles.Pressable}>
+          <TouchableOpacity
+            key={item.id}
+            style={styles.Pressable}
+            onPress={() => {
+              router.push({
+                pathname: "/pages/album/[albumId]",
+                params: { albumId: item.name },
+              });
+            }}
+          >
             <Image source={item.image} style={styles.image} />
             <ThemedText
               style={[styles.text, { textAlign: "center", marginTop: 5 }]}

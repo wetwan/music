@@ -6,7 +6,9 @@ import { AntDesign } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import React from "react";
 import { TouchableOpacity, View } from "react-native";
+import TextTicker from "react-native-text-ticker";
 import { ThemedText } from "../ThemedText";
+import { ThemedView } from "../ThemedView";
 
 type Props = {
   item: MusicProp;
@@ -23,7 +25,7 @@ const MuiscList = ({ item, index }: Props) => {
     truncateText,
   } = useMusicCreation();
   const iconColor = useThemeColor({}, "icon");
-  const accentColor = useThemeColor({}, "accent");
+
   return (
     <>
       <TouchableOpacity
@@ -39,38 +41,90 @@ const MuiscList = ({ item, index }: Props) => {
           justifyContent: "space-between",
           backgroundColor:
             currentSongIndex === index ? Colors.blue : "transparent",
-          borderWidth: currentSongIndex === index ? 1 : 0,
-          borderRadius: currentSongIndex === index ? 10 : 0,
-          borderColor: currentSongIndex === index ? Colors.blue : "transparent",
+          borderWidth: currentSongIndex !== index ? 1 : 0,
+          borderRadius: currentSongIndex === index ? 10 : 10,
+          borderColor: currentSongIndex !== index ? Colors.blue : "transparent",
         }}
       >
         <View style={{ flexDirection: "row", gap: 10 }}>
-          <Image
-            source={item.image}
-            style={{ width: 50, height: 50, borderRadius: 30 }}
-          />
+          <ThemedView
+            darkColor="#fff"
+            lightColor="#000"
+            style={{ borderRadius: 5000, borderWidth: 0 }}
+          >
+            <Image
+              source={item.image}
+              style={{ width: 50, height: 50, borderRadius: 30 }}
+            />
+          </ThemedView>
+
           <View>
-            <ThemedText
-              style={{
-                fontFamily: "outfit-bold",
-                textTransform: "capitalize",
-              }}
-            >
-              {item.name}
-            </ThemedText>
-            <ThemedText
-              style={{
-                fontFamily: "outfit",
-                textTransform: "capitalize",
-                fontSize: 15,
-                color: "#4a4a4a",
-              }}
-            >
-              {truncateText(
-                item.artist.length > 1 ? item.artist.join(" ft ") : item.artist,
-                30
-              )}
-            </ThemedText>
+            {isPlaying && index === currentSongIndex ? (
+              <TextTicker
+                style={{
+                  color: "white",
+                  fontFamily: "outfit",
+                  textTransform: "capitalize",
+                  fontSize: 15,
+                  width: 150,
+                }}
+                duration={15000}
+                loop
+                bounce={false}
+                animationType="scroll"
+                repeatSpacer={50}
+                marqueeDelay={100}
+              >
+                {item.name}
+              </TextTicker>
+            ) : (
+              <ThemedText
+                style={{
+                  fontFamily: "outfit",
+                  textTransform: "capitalize",
+                  fontSize: 15,
+                  color: "white",
+                }}
+              >
+                {truncateText(item.name, 20)}
+              </ThemedText>
+            )}
+            {isPlaying && index === currentSongIndex ? (
+              <TextTicker
+                style={{
+                  fontFamily: "outfit",
+                  textTransform: "capitalize",
+                  fontSize: 15,
+                  marginTop: 10,
+                  width: 200,
+                  color: "#4a4a4a",
+                }}
+                duration={5000}
+                loop
+                bounce={false}
+                animationType="scroll"
+                repeatSpacer={50}
+                marqueeDelay={100}
+              >
+                {item.artist}
+              </TextTicker>
+            ) : (
+              <ThemedText
+                style={{
+                  fontFamily: "outfit",
+                  textTransform: "capitalize",
+                  fontSize: 15,
+                  color: "#4a4a4a",
+                }}
+              >
+                {truncateText(
+                  item.artist.length > 1
+                    ? item.artist.join(" ft ")
+                    : item.artist,
+                  30
+                )}
+              </ThemedText>
+            )}
           </View>
         </View>
 
@@ -84,7 +138,7 @@ const MuiscList = ({ item, index }: Props) => {
           }}
         >
           {isPlaying && currentSongIndex === index ? (
-            <AntDesign name="pausecircleo" color={accentColor} size={30} />
+            <AntDesign name="pausecircleo" color={"white"} size={30} />
           ) : (
             <AntDesign name="playcircleo" color={iconColor} size={30} />
           )}

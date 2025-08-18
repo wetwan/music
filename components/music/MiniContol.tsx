@@ -6,7 +6,6 @@ import TextTicker from "react-native-text-ticker";
 
 import React from "react";
 import { Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
-import { ThemedText } from "../ThemedText";
 import SoundWave from "./soundwave";
 
 const MiniContol = () => {
@@ -17,7 +16,6 @@ const MiniContol = () => {
     handlePrevSong,
     router,
     currentSong,
-    truncateText,
   } = useMusicCreation();
   return (
     <Pressable
@@ -50,6 +48,7 @@ const MiniContol = () => {
               fontFamily: "outfit-bold",
               fontSize: 14, // match your original style
               color: "white",
+              width: 150,
             }}
             duration={5000}
             loop
@@ -61,16 +60,24 @@ const MiniContol = () => {
           </TextTicker>
         </View>
 
-        <ThemedText
-          style={{ textTransform: "capitalize", fontFamily: "outfit" }}
+        <TextTicker
+          style={{
+            textTransform: "capitalize",
+            fontFamily: "outfit",
+            width: 100,
+            color: "white",
+            alignSelf: "flex-end",
+            alignContent: "flex-end",
+            textAlign: "right",
+          }}
+          duration={10000}
+          loop
+          bounce={false}
+          repeatSpacer={10}
+          marqueeDelay={10}
         >
-          {truncateText(
-            currentSong.artist.length > 1
-              ? currentSong.artist.join(" ft ")
-              : currentSong.artist,
-            10
-          )}
-        </ThemedText>
+          {currentSong.artist}
+        </TextTicker>
       </View>
       <View style={[styles.view, { marginTop: 0 }]}>
         <TouchableOpacity onPress={() => handlePrevSong()}>

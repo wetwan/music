@@ -4,7 +4,7 @@ import React from "react";
 import { Pressable } from "react-native";
 import { ThemedView } from "../ThemedView";
 
-const Back = () => {
+const Downlaod = () => {
   const router = useRouter();
   return (
     <ThemedView lightColor="#fff" darkColor="#000">
@@ -18,17 +18,17 @@ const Back = () => {
           justifyContent: "center",
           alignItems: "center",
           alignContent: "center",
-          left: 20,
+          right: 20,
           borderRadius: 30,
           zIndex: 5000000000,
-          flex: 1
+          flex: 1,
         }}
         onPress={() => router.back()}
       >
-        <MaterialIcons name="chevron-left" size={25} color={"white"} />
+        <MaterialIcons name="download" size={20} color={"white"} />
       </Pressable>
     </ThemedView>
   );
 };
 
-export default Back;
+export default Downlaod;

@@ -10,15 +10,16 @@ export interface MusicProp {
     name: string;
     id: string;
     file: string;
-    mix: string[];
-    type: string;
+    mix?: string[];
+    type?: string;
     album?: string
 }
 export interface AlbumProp {
     name: string;
-    artist: string[];
+    artist: string[] | string;
     id: string;
     image: string;
+    is?: boolean
 
 }
 

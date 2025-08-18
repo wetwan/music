@@ -19,6 +19,7 @@ const Playlist = () => {
 
   return (
     <ThemedView style={{ flex: 1 }} lightColor="#fff" darkColor="#000">
+      <Back />
       <View
         style={{
           width: width * 0.9,
@@ -29,7 +30,6 @@ const Playlist = () => {
           justifyContent: "space-between",
         }}
       >
-        <Back />
         <View>
           <MaterialCommunityIcons name="heart-plus" color={"white"} size={30} />
         </View>
@@ -51,13 +51,15 @@ const Playlist = () => {
             },
           }}
         >
-          <Image
-            source={currentSong.image}
-            style={{
-              width: width / 2,
-              height: width / 2,
-            }}
-          />
+          <ThemedView>
+            <Image
+              source={currentSong.image}
+              style={{
+                width: width / 2,
+                height: width / 2,
+              }}
+            />
+          </ThemedView>
         </TouchableOpacity>
         <TouchableOpacity onPress={handlePlayPause}>
           {!isPlaying ? (

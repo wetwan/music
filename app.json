@@ -9,13 +9,23 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+        "infoPlist": {
+        "NSMicrophoneUsageDescription": "This app needs access to your microphone to record audio.",
+        "NSAppleMusicUsageDescription": "This app needs access to your music library to play songs.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to your media library."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logobeatbox.png"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+        "permissions": [
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "RECORD_AUDIO"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -32,7 +42,9 @@
           "resizeMode": "contain"
         }
       ],
-      "expo-audio"
+      "expo-audio",
+      "expo-media-library",
+      "expo-document-picker"
     ],
     "experiments": {
       "typedRoutes": true

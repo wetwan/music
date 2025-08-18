@@ -58,14 +58,25 @@ export const artist = [
     { name: "artist 6", image: image12 },
 ];
 export const albums: AlbumProp[] = [
-    { name: "album 1", artist: ['artist 1', 'artist 7'], id: '1', image: image2 },
-    { name: "album 2", artist: ['artist 2', 'artist 9', 'artist 1'], id: '2', image: image9 },
-    { name: "album 3", artist: ['artist 3', 'artist 9', 'artist 1'], id: '3', image: image10 },
+    {
+        name: "album 1",
+        artist: ['artist 1', 'artist 7'],
+        id: '1',
+        image: image2,
+        is: true
+    },
+    {
+        name: "album 2",
+        artist: ['artist 2', 'artist 9', 'artist 1'],
+        id: '2',
+        image: image9
+    },
+    { name: "album 3", artist: ['artist 3', 'artist 9', 'artist 1'], id: '3', image: image10, is: true },
     { name: "album 4", artist: ['artist 3', 'artist 2', 'artist 1'], id: '4', image: image11 },
-    { name: "album 7", artist: ['artist 4', 'artist 5'], id: '5', image: image11 },
+    { name: "album 7", artist: ['artist 4', 'artist 5'], id: '5', image: image11, is: true },
     { name: "album 8", artist: ['artist 5', 'artist 7', 'artist 1'], id: '6', image: image10 },
     { name: "album 9", artist: ['artist 1', 'artist 6'], id: '7', image: image8 },
-    { name: "album 5", artist: ['artist 4', 'artist 8', 'artist 1'], id: '8', image: image9 },
+    { name: "album 5", artist: ['artist 4', 'artist 8', 'artist 1'], id: '8', image: image9, is: true },
     { name: "album 6", artist: ['artist 6', 'artist 8', 'artist 2'], id: '9', image: image12 },
 ];
 
@@ -121,6 +132,16 @@ export const musics: MusicProp[] = [
         type: "sleep",
         album: 'album 6'
     },
+    {
+        artist: ["artist 9", 'artist 8', 'artist 7', 'artist 6', 'artist 5', 'artist 4', 'artist 3', 'artist 2', 'artist 1'],
+        image: image3,
+        name: "for is new is new",
+        id: "7",
+        file: song3,
+        mix: ["your mix 2", 'your mix 3', 'your mix 4', 'your mix 1'],
+        type: "love",
+
+    },
 
 ];
 
@@ -134,7 +155,8 @@ export const recents = [
         mix: ["your mix 2", 'your mix 3', 'your mix 4', 'your mix 1'],
         type: "love",
 
-    }, {
+    },
+    {
         artist: ["artist 7", 'artist 4', 'artist 4'],
         image: image10,
         name: "wetwan",

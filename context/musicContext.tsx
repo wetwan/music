@@ -3,8 +3,8 @@ import { recents } from "@/constants/music";
 import { MusicProp } from "@/types/types";
 import { Audio, AVPlaybackStatus } from "expo-av";
 // import * as Audio from "expo-audio";
+import * as MediaLibrary from "expo-media-library";
 import { Router, useRouter } from "expo-router";
-
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Platform } from "react-native";
 
@@ -32,6 +32,10 @@ type MusicContextType = {
   recent: MusicProp[];
   setRecent: React.Dispatch<React.SetStateAction<MusicProp[]>>;
   truncateText(text: string | string[], length: number): string;
+  tracks: MusicProp[];
+  setTracks: React.Dispatch<React.SetStateAction<MusicProp[]>>;
+  permission: boolean;
+  setPermission: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const MusicContext = createContext<MusicContextType | undefined>(undefined);
@@ -49,6 +53,42 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   const [recent, setRecent] = useState<MusicProp[]>([]);
   const currentSong: MusicProp =
     playlist[currentSongIndex ?? 0] || ({} as MusicProp);
+
+  const [tracks, setTracks] = useState<MusicProp[]>([]);
+  const [permission, setPermission] = useState(false);
+
+  useEffect(() => {
+    const fetchMusic = async () => {
+      // Handle mobile (iOS/Android) platform
+      if (Platform.OS !== "web") {
+        const { status } = await MediaLibrary.requestPermissionsAsync();
+        if (status !== "granted") {
+          setPermission(false);
+          return;
+        }
+        setPermission(true);
+
+        const media = await MediaLibrary.getAssetsAsync({
+          mediaType: MediaLibrary.MediaType.audio,
+        });
+
+        const musicAssets = media.assets.map((asset) => ({
+          id: asset.id,
+          name: asset.filename || "Unknown",
+          artist: ["Unknown Artist"],
+          image: require("../assets/images/music.png"),
+          file: asset.uri,
+          duration: asset.duration ?? 0,
+          mix: [],
+          type: "audio",
+        }));
+
+        setTracks(musicAssets);
+        setPlaylist(musicAssets);
+      }
+    };
+    fetchMusic();
+  }, []);
 
   useEffect(() => {
     return sound
@@ -75,7 +115,6 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     };
   }, [sound, isPlaying]);
 
-  
   const getRecent = async () => {
     // Use recents directly instead of waiting for setState
     setRecent(recents);
@@ -86,29 +125,41 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-
   const playSoundWithList = async (list: any[], index: number) => {
-    if (!list[index]?.file) return; // no file, skip
+    if (!list[index]?.file) {
+      // If no file exists, stop any playback and exit
+      if (sound) {
+        await sound.stopAsync();
+        await sound.unloadAsync();
+      }
+      return;
+    }
 
+    // Check if we are trying to play the same song that is currently paused
     if (sound && currentSongIndex === index && !isPlaying) {
       await sound.playAsync();
       setIsPlaying(true);
       return;
     }
 
-    if (sound) await sound.unloadAsync();
+    if (sound) {
+      await sound.unloadAsync();
+    }
 
     const { sound: newSound } = await Audio.Sound.createAsync(
       { uri: list[index].file },
-      { shouldPlay: true }
+      { shouldPlay: true } // Start playing as soon as it's ready
     );
 
-    newSound.setOnPlaybackStatusUpdate((status: AVPlaybackStatus) => {
+    // Set up the event listener for when the song finishes
+    newSound.setOnPlaybackStatusUpdate((status) => {
       if (status.isLoaded && status.didJustFinish) {
+        // Logic to play the next song
         handleNextSong();
       }
     });
 
+    // Update the state with the new sound object and playback status
     setIsPlaying(true);
     setSound(newSound);
     setCurrentSongIndex(index);
@@ -118,7 +169,6 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     playSoundWithList(playlist, index);
   };
 
-  
   const handlePlayPause = async () => {
     if (!sound) return;
 
@@ -191,6 +241,10 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
         setRecent,
         recent,
         truncateText,
+        tracks,
+        setPermission,
+        setTracks,
+        permission,
       }}
     >
       {children}

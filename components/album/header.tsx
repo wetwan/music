@@ -2,47 +2,41 @@ import { AlbumProp, MusicProp } from "@/types/types";
 import { Image, ImageBackground } from "expo-image";
 import React from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
-
 import { ThemedText } from "../ThemedText";
-import Back from "../ux/back";
 
 interface Props {
-  playlist: MusicProp[];
-  artistList:
-    | {
-        name: string;
-        image: string;
-      }
-    | undefined;
-
-  albumList: AlbumProp[];
+  album: AlbumProp | undefined;
+  musicList: MusicProp[];
 }
-
 const { width } = Dimensions.get("screen");
 
-const Header = ({ playlist, artistList, albumList }: Props) => {
+const Header = ({ album, musicList }: Props) => {
   return (
     <View style={styles.container}>
-      <Back />
       <ImageBackground
         style={styles.ImageBackground}
-        source={artistList?.image}
+        source={album?.image}
         blurRadius={10}
       >
-        <Image source={artistList?.image} style={[styles.BackgroundImage]} />
+        <Image source={album?.image} style={[styles.BackgroundImage]} />
 
         <ThemedText
           style={[styles.text, { fontFamily: "outfit-bold", marginTop: 4 }]}
         >
-          {artistList?.name}
+          {album?.name}
         </ThemedText>
         <View style={styles.view}>
           <ThemedText style={[styles.text, { textTransform: "capitalize" }]}>
-            {albumList.length} {playlist.length > 1 ? "album" : "albums"}
+            {
+              album?.artist
+              // .length > 1 ? album.artist.concat(" , ") : album.artist,
+              //  .length > 1 ? "album" : "albums"
+            }
           </ThemedText>
+
           {
             <ThemedText style={[styles.text, { textTransform: "capitalize" }]}>
-              {playlist.length} {playlist.length <= 1 ? "song" : "songs"}
+              {musicList.length} {musicList.length <= 1 ? "song" : "songs"}
             </ThemedText>
           }
         </View>
@@ -71,7 +65,7 @@ const styles = StyleSheet.create({
   view: {
     marginTop: 10,
     width: width * 0.4,
-    flexDirection: "row",
+    // flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },

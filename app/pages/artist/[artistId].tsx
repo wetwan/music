@@ -4,6 +4,7 @@ import Header from "@/components/artists/header";
 import Songs from "@/components/artists/songs";
 import MiniContol from "@/components/music/MiniContol";
 import { ThemedView } from "@/components/ThemedView";
+import Back from "@/components/ux/back";
 import { albums, artist, musics } from "@/constants/music";
 import { useMusicCreation } from "@/context/musicContext";
 import { AlbumProp, MusicProp } from "@/types/types";
@@ -49,7 +50,8 @@ const ArtistId = () => {
   return (
     <>
       <ThemedView style={{ flex: 1 }} lightColor="#fff" darkColor="#000">
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView>
+          <Back />
           <SafeAreaView>
             <Header
               playlist={musicList}
