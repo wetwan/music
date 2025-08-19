@@ -1,7 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { recents } from "@/constants/music";
 import { MusicProp } from "@/types/types";
-import { Audio, AVPlaybackStatus } from "expo-av";
+import {
+  Audio,
+  AVPlaybackStatus,
+  InterruptionModeAndroid,
+  InterruptionModeIOS,
+} from "expo-av";
 // import * as Audio from "expo-audio";
 import * as MediaLibrary from "expo-media-library";
 import { Router, useRouter } from "expo-router";
@@ -127,18 +132,16 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
 
   const playSoundWithList = async (list: any[], index: number) => {
     if (!list[index]?.file) {
-      // If no file exists, stop any playback and exit
       if (sound) {
         await sound.stopAsync();
         await sound.unloadAsync();
       }
       return;
     }
-
-    // Check if we are trying to play the same song that is currently paused
     if (sound && currentSongIndex === index && !isPlaying) {
       await sound.playAsync();
       setIsPlaying(true);
+
       return;
     }
 
@@ -148,7 +151,7 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
 
     const { sound: newSound } = await Audio.Sound.createAsync(
       { uri: list[index].file },
-      { shouldPlay: true } // Start playing as soon as it's ready
+      { shouldPlay: true }
     );
 
     // Set up the event listener for when the song finishes
@@ -165,6 +168,16 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     setCurrentSongIndex(index);
   };
 
+  useEffect(() => {
+    Audio.setAudioModeAsync({
+      allowsRecordingIOS: false,
+      staysActiveInBackground: true,
+      playsInSilentModeIOS: true,
+      shouldDuckAndroid: true,
+      interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
+      interruptionModeIOS: InterruptionModeIOS.DoNotMix,
+    });
+  }, []);
   const playSound = (index: number) => {
     playSoundWithList(playlist, index);
   };

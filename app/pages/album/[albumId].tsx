@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Downlaod from "@/components/album/donwload";
 import Header from "@/components/album/header";
 import { ThemedView } from "@/components/ThemedView";
@@ -14,7 +15,7 @@ import { FlatList, StyleSheet } from "react-native";
 const AlbumId = () => {
   const { albumId } = useLocalSearchParams();
 
-  const { setPlaylist, isPlaying } = useMusicCreation();
+  const { setPlaylist } = useMusicCreation();
 
   const [album, setalbum] = useState<AlbumProp | undefined>(undefined);
   const [musicList, setmusicList] = useState<MusicProp[]>([]);
